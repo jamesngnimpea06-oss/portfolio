@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- Font Awesome pour les vrais logos des réseaux sociaux -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
@@ -345,7 +347,7 @@
         .slider-track {
             display: flex;
             gap: 20px;
-            width: calc(300px * 12); /* 6 images x 2 pour le loop */
+            width: max-content;
             animation: scroll 25s linear infinite;
         }
         .slider-track:hover { animation-play-state: paused; }
@@ -462,6 +464,7 @@
 
         @media (max-width: 900px) { 
             .hero-grid, .contact-box { grid-template-columns: 1fr; } 
+            .hero-photo-container { margin: 40px auto 0 !important; max-width: 350px; }
             .nav-links { display: none; } 
             .hamburger { display: flex; }
             .social-aside-fixed { 
@@ -487,7 +490,7 @@
         @media (max-width: 768px) {
             .container { padding: 0 20px; }
             .hero-section { min-height: auto; padding: 120px 0 60px; }
-            .hero-photo-container { max-width: 300px; }
+            .hero-photo-container { max-width: 300px; margin: 40px auto 0 !important; }
             h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); }
             .typing-container { font-size: 1.1rem; }
             .section-title { font-size: 2rem; margin-bottom: 30px; text-align: left; }
@@ -496,12 +499,11 @@
             .project-grid { grid-template-columns: 1fr; gap: 20px; }
             .contact-box { padding: 25px; gap: 25px; grid-template-columns: 1fr; }
             .contact-info { padding: 25px; }
-            .social-aside-fixed { bottom: 20px; right: 20px; top: auto; transform: none; flex-direction: row; }
+            .social-aside-fixed { bottom: 20px; left: 50%; right: auto; top: auto; transform: translateX(-50%); flex-direction: row; background: var(--glass); padding: 8px 15px; border-radius: 50px; border: 1px solid var(--border); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
             .social-fixed-icon { width: 45px; height: 45px; }
             .slider-container { padding: 10px 0; }
             .slide-card { width: 250px; height: 150px; }
-            .slider-track { width: calc(250px * 12); }
-            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 6 - 100px)); } }
+            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 6 - 120px)); } }
         }
         
         @media (max-width: 480px) {
@@ -524,8 +526,7 @@
             .btn-submit, .btn-cv { padding: 12px 25px; font-size: 0.85rem; }
             .social-fixed-icon { width: 40px; height: 40px; }
             .slide-card { width: 200px; height: 120px; }
-            .slider-track { width: calc(200px * 12); }
-            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 6 - 80px)); } }
+            @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-200px * 6 - 120px)); } }
         }
     </style>
     <style>
@@ -679,11 +680,11 @@
     </div>
 
     <aside class="social-aside-fixed">
-        <a href="https://linkedin.com/in/james-ngnimpea" target="_blank" class="social-fixed-icon icon-fixed-li" title="LinkedIn"><i data-lucide="linkedin"></i></a>
-        <a href="https://github.com/jamesngnimpea" target="_blank" class="social-fixed-icon icon-fixed-gh" title="GitHub"><i data-lucide="github"></i></a>
-        <a href="https://www.facebook.com/jamessezack" target="_blank" class="social-fixed-icon icon-fixed-fb" title="Facebook"><i data-lucide="facebook"></i></a>
-        <a href="https://www.youtube.com/@jamesngnimpea" target="_blank" class="social-fixed-icon icon-fixed-yt" title="YouTube"><i data-lucide="youtube"></i></a>
-        <a href="https://wa.me/237679061358" target="_blank" class="social-fixed-icon icon-fixed-wa" title="WhatsApp"><i data-lucide="message-circle"></i></a>
+        <a href="https://linkedin.com/in/james-ngnimpea" target="_blank" class="social-fixed-icon icon-fixed-li" title="LinkedIn"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+        <a href="https://github.com/jamesngnimpea" target="_blank" class="social-fixed-icon icon-fixed-gh" title="GitHub"><i class="fa-brands fa-github fa-lg"></i></a>
+        <a href="https://www.facebook.com/jamessezack" target="_blank" class="social-fixed-icon icon-fixed-fb" title="Facebook"><i class="fa-brands fa-facebook-f fa-lg"></i></a>
+        <a href="https://www.youtube.com/@jamesngnimpea" target="_blank" class="social-fixed-icon icon-fixed-yt" title="YouTube"><i class="fa-brands fa-youtube fa-lg"></i></a>
+        <a href="https://wa.me/237679061358" target="_blank" class="social-fixed-icon icon-fixed-wa" title="WhatsApp"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
     </aside>
 
     <div class="parallax-wrapper">
@@ -718,10 +719,10 @@
 
     <div class="mobile-menu" id="mobile-menu">
         <ul class="mobile-nav-links">
-            <li><a href="#home" onclick="closeMobileMenu()">Accueil</a></li>
-            <li><a href="#skills" onclick="closeMobileMenu()">Compétences</a></li>
-            <li><a href="#portfolio" onclick="closeMobileMenu()">Projets</a></li>
-            <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#portfolio">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
 
@@ -736,9 +737,9 @@
                 <p style="color: var(--text-dim); max-width: 580px; line-height: 1.7; margin-bottom: 35px; font-size: 1.1rem;">
                     Futur ingénieur logiciel spécialisé dans la conception d'applications robustes et l'optimisation de systèmes. Je transforme les problèmes complexes en solutions numériques fluides.
                 </p>
-                <div style="display: flex; gap: 15px;">
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <a href="#contact" class="btn-submit" style="text-decoration: none; padding: 15px 35px; width: auto; display: inline-block;">Me contacter</a>
-                    <a href="CV_James_Ngnimpea.pdf" download class="btn-cv">
+                    <a href="Resume - Développeur Web & Mobile.pdf" download class="btn-cv">
                         <i data-lucide="download" size="18"></i>
                         Télécharger CV
                     </a>
@@ -963,10 +964,10 @@
                     <b>James Ngnimpéa</b> &copy; 2026. Tous droits réservés.
                 </div>
                 <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/jamesngnimpea/" target="_blank"><i data-lucide="linkedin"></i></a>
-                    <a href="https://github.com/jamesngnimpea" target="_blank"><i data-lucide="github"></i></a>
-                    <a href="https://www.facebook.com/jamessezack" target="_blank"><i data-lucide="facebook"></i></a>
-                    <a href="https://www.youtube.com/@jamesngnimpea" target="_blank"><i data-lucide="youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/jamesngnimpea/" target="_blank"><i class="fa-brands fa-linkedin-in fa-lg"></i></a>
+                    <a href="https://github.com/jamesngnimpea" target="_blank"><i class="fa-brands fa-github fa-lg"></i></a>
+                    <a href="https://www.facebook.com/jamessezack" target="_blank"><i class="fa-brands fa-facebook-f fa-lg"></i></a>
+                    <a href="https://www.youtube.com/@jamesngnimpea" target="_blank"><i class="fa-brands fa-youtube fa-lg"></i></a>
                 </div>
             </div>
         </div>
